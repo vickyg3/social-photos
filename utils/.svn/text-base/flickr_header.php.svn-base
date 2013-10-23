@@ -1,0 +1,11 @@
+<?php
+
+require_once(dirname(dirname(__FILE__)) . '/phpFlickr.php');
+$api_key = "34b009577e993feaa7ccbc03c6d975f8";
+$api_secret = "0b159c9a90bc0eb6";
+// this is for v2 - TODO: replace this before launch
+$api_key = "b18ae686e0e9a60c015e154ab1e0c68f";
+$api_secret = "e5eba2dcf839c434";
+$flickr = new phpFlickr($api_key, $api_secret);
+
+?>

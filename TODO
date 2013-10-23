@@ -1,0 +1,19 @@
+These are my unimplemented ideas about this project. If you have more, feel free to email me/send a PR with this file changed.
+
+Feel free to implement any of these (or your own idea) and send a PR, I'll be more than happy to look at it.
+
+- implement a cache layer
+- add error handling if $_GET parameters are missing in various files
+- Refactor the codebase (long lines, etc.)
+- Update privacy policy to reflect changes wrt takeout
+- Linkify albums in tab 3 of takeouts to link to the actual album in the social network
+- Show number of likes for each album in the polaroid
+- Show number of comments int he polaroid
+- Add an option to transfer comments as plain text
+- Add an option to delete a photo (place an x on the polaroid).
+- Add an option to transfer or operate on multiple photos (delete, etc.) - place a check box on the polaroid
+- consider replacing photo fetching by just passing the url (fb supports it. not sure of others)
+- handle instagram API pagination correctly
+- add user switching ability
+- add support for multiple users so that you can transfer between two different facebook accounts.
+- Add help hover near "signed in as vignesh" to show how to sign in as a different user.
