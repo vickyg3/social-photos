@@ -20,6 +20,18 @@ function create_dir($dir) {
 	}
 }
 
+// make a valid file/dir name
+// Code adapted from: http://stackoverflow.com/questions/2668854/sanitizing-strings-to-make-them-url-and-filename-safe
+function sanitize($string) {
+    $strip = array("~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "=", "+", "[", "{", "]",
+                   "}", "\\", "|", ";", ":", "\"", "'", "&#8216;", "&#8217;", "&#8220;", "&#8221;", "&#8211;", "&#8212;",
+                   "â€”", "â€“", ",", "<", ".", ">", "/", "?");
+    $clean = trim(str_replace($strip, "", strip_tags($string)));
+    $clean = preg_replace('/\s+/', "-", $clean);
+    $clean = preg_replace("/[^a-zA-Z0-9]/", "_", $clean);
+    return $clean;
+}
+
 function fetch_album($jobdir, $networkid, $albumid, $access_token) {
 	$sn = sn($networkid);
 	session_register($sn->session_variable());
@@ -30,7 +42,7 @@ function fetch_album($jobdir, $networkid, $albumid, $access_token) {
 	// fetch the photos list
 	$photos = $sn->photos_list($albumid);
 	// create the sub directory for this album
-	$album_name = $photos['album_name'] ? $photos['album_name'] : $albumid;
+	$album_name = sanitize($photos['album_name'] ? $photos['album_name'] : $albumid);
 	$albumdir = "{$dir}/{$album_name}";
 	create_dir($albumdir);
 	// fetch all the photos
@@ -40,7 +52,7 @@ function fetch_album($jobdir, $networkid, $albumid, $access_token) {
 		$photo_info = $sn->photo($photo['photo_id']);
 		// fetch the photo and save it to disk
 		$name_or_id = trim($photo_info['caption']) ? $photo_info['caption'] : $photo['photo_id'];
-		$filename = "{$albumdir}/" . ($index + 1) . " - {$name_or_id}." . pathinfo($photo_info['url'], PATHINFO_EXTENSION);
+		$filename = "{$albumdir}/" . ($index + 1) . " - " . sanitize($name_or_id) . "." . pathinfo($photo_info['url'], PATHINFO_EXTENSION);
 		file_put_contents($filename, file_get_contents($photo_info['url']));
 	}
 }
