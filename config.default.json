@@ -47,6 +47,11 @@
     "db_string": {
         "value": "host=localhost dbname=socialphotos user=user password=password",
         "comment": "Postgres connection string for logging"
+    },
+
+    "takeout_email_password": {
+        "value": "",
+        "comment": "password for takeout email account."
     }
 
 }

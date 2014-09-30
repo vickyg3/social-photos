@@ -104,7 +104,7 @@ function send_email($email, $link) {
 	$mail->Port = 465;
 	$mail->SMTPAuth = true;
 	$mail->Username = 'takeout@socialphotos.net';
-	$mail->Password = ''; // password filled up in the production deployment
+	$mail->Password = Config::get("takeout_email_password");
 	$mail->SMTPSecure = 'ssl';
 
 	$mail->From = 'takeout@socialphotos.net';
