@@ -60,7 +60,7 @@ require_once('social_networks/flickr.php');
 require_once('social_networks/instagram.php');
 require_once('social_networks/orkut.php');
 
-$num_social_networks = 5;
+$num_social_networks = 4;
 
 function sn($id) {
     switch ($id) {
