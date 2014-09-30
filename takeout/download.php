@@ -22,12 +22,12 @@ albums as a zip file.
 
 <?php
 
-session_unregister("takeout_tab");
-session_unregister("takeout_selection_0");
-session_unregister("takeout_selection_1");
-session_unregister("takeout_selection_2");
-session_unregister("takeout_selection_3");
-session_unregister("taking_out");
-session_unregister("takeout_album_ids");
+unset($_SESSION['takeout_tab']);
+unset($_SESSION['takeout_selection_0']);
+unset($_SESSION['takeout_selection_1']);
+unset($_SESSION['takeout_selection_2']);
+unset($_SESSION['takeout_selection_1']);
+unset($_SESSION['taking_out']);
+unset($_SESSION['takeout_album_ids']);
 
 ?>

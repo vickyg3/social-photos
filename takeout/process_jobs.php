@@ -34,7 +34,6 @@ function sanitize($string) {
 
 function fetch_album($jobdir, $networkid, $albumid, $access_token) {
 	$sn = sn($networkid);
-	session_register($sn->session_variable());
 	$_SESSION[$sn->session_variable()] = $access_token;
 	// create sub directory for this network if it doesn't exist
 	$dir = "{$jobdir}/{$sn->name()}";
@@ -128,7 +127,7 @@ function send_email($email, $link) {
 	$wstr .= "<small>If you believe you have received this email in error, please send an empty reply to this email immediately.</small>";
 	$mail->Body = $wstr;
 	$mail->AltBody = $wstr;
-	
+
 	$mail->Send();
 }
 

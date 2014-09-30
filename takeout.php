@@ -74,7 +74,7 @@
     <script src="static/takeout.js"></script>
     <script>
     <?php
-      if (session_is_registered("takeout_tab")) {
+      if (isset($_SESSION["takeout_tab"])) {
           for($i = 2; $i <= intval($_SESSION['takeout_tab']); $i++) {
               echo "showTab{$i}();";
           }

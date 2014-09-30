@@ -14,10 +14,10 @@
       echo "<label class=\"checkbox\">";
       $checked = "";
       $label = "Not Selected";
-      if (session_is_registered("takeout_selection_{$i}") && intval($_SESSION["takeout_selection_{$i}"])) {
+      if (isset($_SESSION["takeout_selection_{$i}"]) && intval($_SESSION["takeout_selection_{$i}"])) {
           $checked = "checked";
           $label = "Selected";
-          if (!session_is_registered($sn->session_variable())) $label .= " (Please Sign In!)";
+          if (!isset($_SESSION[$sn->session_variable()])) $label .= " (Please Sign In!)";
       }
       echo "<input type=\"checkbox\" id=\"network_{$i}\" {$checked}/><span id=\"text_{$i}\">{$label}</span>";
       echo "<script>$(\"#network_{$i}\").change(takeoutSelectNetwork);</script>";
@@ -25,7 +25,7 @@
       echo "</td>";
       echo "<td>{$sn->name()}</td>";
       echo "<td>";
-      if (session_is_registered($sn->session_variable())) {
+      if (isset($_SESSION[$sn->session_variable()])) {
           $userinfo = $sn->basic_info();
           if ($userinfo['link']) echo "<a href=\"{$userinfo['link']}\" target=\"_blank\">";
           echo $userinfo['name'];

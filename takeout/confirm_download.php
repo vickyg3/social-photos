@@ -1,6 +1,5 @@
 <?php
   require_once(dirname(dirname(__FILE__)) . "/social_network.php");
-  session_register("takeout_album_ids");
   $_SESSION['takeout_album_ids'] = file_get_contents("php://input");
   $ids = array_unique(json_decode($_SESSION['takeout_album_ids'], true));
   $album_count = count($ids);

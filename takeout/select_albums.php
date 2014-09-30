@@ -4,13 +4,13 @@
     $show_network = array(false, false, false);
     $sn = array(0, 0, 0);
     for ($i = 0; $i < 3; $i++) {
-        if (session_is_registered("takeout_selection_{$i}") && intval($_SESSION["takeout_selection_{$i}"])) {
+        if (isset($_SESSION["takeout_selection_{$i}"]) && intval($_SESSION["takeout_selection_{$i}"])) {
             $show_network[$i] = true;
             $sn[$i] = sn($i);
         }
     }
     $ids = array();
-    if (session_is_registered("takeout_album_ids")) {
+    if (isset($_SESSION["takeout_album_ids"])) {
       $ids = array_unique(json_decode($_SESSION['takeout_album_ids'], true));
     }
 ?>
