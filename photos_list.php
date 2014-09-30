@@ -26,12 +26,6 @@ if(isset($_GET['format']) && $_GET['format'] == 'json') {
         echo json_encode($photos_list);
     }
 } else {
-    if(!$photos_list && intval($id) == 4) {
-        echo "Exceeded maximum quota usage for fetching Orkut data. This is a restriction on Orkut's side and we are unable to do anything about it! :-( <br/><br/>Please try again after a couple of hours!";
-        echo "<br/><br/>";
-        echo "Alternatively, you can export your Orkut photos to Google+ by visiting this link <a href=\"http://www.orkut.com/AlbumsExport\">http://www.orkut.com/AlbumsExport</a> and then use Social Photos to transfer those to other social networks.";
-        die();
-    }
     if ($sn->has_albums()) {
         if (array_key_exists("album_name", $photos)) {
             echo "In Album <a href=\"" . $photos['album_link'] . "\" target=\"_blank\">" . $photos['album_name'] . "</a> |";

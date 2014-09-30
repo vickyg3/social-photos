@@ -46,32 +46,4 @@ function add_takeout_job($job) {
 
 // End of Takeout DB helper functions
 
-
-// Orkut DB helper functions
-
-function orkut_store($photoid, $url, $caption) {
-    $sessionid = pg_escape_string($_SESSION['orkut_access_token']);
-    $photoid = pg_escape_string($photoid);
-    $url = pg_escape_string($url);
-    $caption = pg_escape_string($caption);
-    $query = "INSERT INTO orkut_cache (session_id, photo_id, url, caption) VALUES ('$sessionid', '$photoid', '$url', '$caption');";
-    run_query($query);
-}
-
-function orkut_fetch($photoid) {
-    $sessionid = pg_escape_string($_SESSION['orkut_access_token']);
-    $photoid = pg_escape_string($photoid);
-    $db = open_db();
-    $query = "SELECT url,caption FROM orkut_cache WHERE session_id='$sessionid' AND photo_id='$photoid';";
-    $result = pg_query($db, $query);
-    if (pg_num_rows($result)) {
-        $row = pg_fetch_array($result);
-    }
-    pg_free_result($result);
-    close_db($db);
-    return array("url" => $row[0], "caption" => $row[1]);
-}
-
-// End of Orkut DB helper functions
-
 ?>

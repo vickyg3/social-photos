@@ -13,11 +13,6 @@ $start_time = time();
 $album_list = $sn->album_list();
 log_api_call($id, 'album_list', time() - $start_time);
 
-if (!$album_list && intval($id) == 4) {
-    echo "Exceeded maximum quota usage for fetching Orkut data. This is a restriction on Orkut's side and we are unable to do anything about it! :-( <br/><br/>Please try again after a couple of hours!";
-    die();
-}
-
 echo "<div id=\"pagination_pane{$pane}\"></div>";
 echo "<ul class=\"polaroids\" id=\"pane{$pane}_polaroids\">";
 foreach($album_list as $album) {
