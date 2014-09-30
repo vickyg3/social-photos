@@ -1,4 +1,5 @@
 config.json
 config.prod.json
 config.test.json
-.DS_Storestats.php
+.DS_Store
+stats.php
