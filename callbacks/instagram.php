@@ -7,9 +7,9 @@ $loader = new SplClassLoader('Instagram', dirname(".."));
 $loader->register();
 
 $auth_config = array(
-    'client_id'         => '', // key filled up in production deployment
-    'client_secret'     => '', // key filled up in production deployment
-    'redirect_uri'      => 'http://socialphotos.net/callbacks/instagram.php',
+    'client_id'         => Config::get("instagram_api_key"),
+    'client_secret'     => Config::get("instagram_api_secret"),
+    'redirect_uri'      => Config::get("domain") . '/callbacks/instagram.php',
     'scope'             => array('basic')
 );
 

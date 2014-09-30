@@ -86,7 +86,7 @@ function flickr_post_photo($albumid, $photo, $photo_file) {
 function flickr_remove_placeholder_photo() {
     include(dirname(__FILE__) . "/flickr_header.php");
     $flickr->photos_delete($_SESSION['flickr_photo_id']);
-    session_unregister("flickr_photo_id");
+    unset($_SESSION["flickr_photo_id"]);
 }
 
 function flickr_create_set($title, $caption) {
@@ -97,7 +97,6 @@ function flickr_create_set($title, $caption) {
                                  dirname(dirname(__FILE__)) . "/static/images/flickr-icon-32.png");
     // TODO: investigate if the dummy photo can be removed once the transfer is complete
     $data = $flickr->photosets_create($title, $caption, $photoid);
-    session_register("flickr_photo_id");
     $_SESSION['flickr_photo_id'] = $photoid;
     return array("albumid" => $data['id']);
 }

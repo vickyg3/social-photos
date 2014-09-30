@@ -6,8 +6,9 @@
      * using phpFlickr::auth() from another page or if you set the remember_uri
      * argument to false.
      */
-    $api_key                 = ""; // key filled up in production deployment
-    $api_secret              = ""; // key filled up in production deployment
+    require_once(dirname(dirname(__FILE__)) . "/social_network.php");
+    $api_key                 = Config::get("flickr_api_key");
+    $api_secret              = Config::get("flickr_api_secret");
     $default_redirect        = "/";
     $permissions             = "delete";
     $path_to_phpFlickr_class = "../";
@@ -16,7 +17,7 @@
     require_once($path_to_phpFlickr_class . "phpFlickr.php");
     unset($_SESSION['phpFlickr_auth_token']);
 
-    if ( isset($_SESSION['phpFlickr_auth_redirect']) && !empty($_SESSION['phpFlickr_auth_redirect']) ) {
+    if (isset($_SESSION['phpFlickr_auth_redirect']) && !empty($_SESSION['phpFlickr_auth_redirect']) ) {
         $redirect = $_SESSION['phpFlickr_auth_redirect'];
         unset($_SESSION['phpFlickr_auth_redirect']);
     }

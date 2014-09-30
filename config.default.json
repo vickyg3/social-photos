@@ -1,0 +1,52 @@
+{
+    "domain": {
+        "value": "",
+        "comment": "domain (with protocol) in which the app is hosted (without the trailing slash)"
+    },
+
+    "facebook_api_key": {
+        "value": "",
+        "comment": "Graph API key to access Facebook. This can be obtained from http://developers.facebook.com => Apps => Your App => App ID. If you are creating the app for the first time, add {{domain}} to the list of App Domains."
+    },
+
+    "flickr_api_key": {
+        "value": "",
+        "comment": "Flickr App Garden API key. This can be obtained from https://www.flickr.com/services/ => Apps by you => Your App's Key. If you are creating the app for the first time, set the callback URL to http://{{domain}}/callbacks/flickr.php"
+    },
+
+    "flickr_api_secret": {
+        "value": "",
+        "comment": "Flickr App Garden API secret. This can be obtained from https://www.flickr.com/services/ => Apps by you => Your App's Secret"
+    },
+
+    "google_api_key": {
+        "value": "",
+        "comment": "Google API key to access Google+. This can be obtained from https://console.developers.google.com => Your App => APIs & Auth => Credentials => Client ID. If you are creating the app for the first time, add {{domain}} to Javascript Origins and http://{{domain}}/callbacks/google.php to Redirect URIs. Under APIs & Auth => API => Enable Google+ API and Contacts API."
+    },
+
+    "google_api_secret": {
+        "value": "",
+        "comment": "Google API key to access Google+. This can be obtained from https://console.developers.google.com => Your App => APIs & Auth => Credentials => Client Secret"
+    },
+
+    "instagram_api_key": {
+        "value": "",
+        "comment": "Instagram API key. This can be obtained from http://instagram.com/developer => Manage Clients => Your App => Client ID. If you are creating the app for the first time, specify {{domain}} as Website URL and {{domain}}/callbacks/instagram.php as Redirect URI."
+    },
+
+    "instagram_api_secret": {
+        "value": "",
+        "comment": "Instagram API key. This can be obtained from http://instagram.com/developer => Manage Clients => Your App => Client Secret."
+    },
+
+    "log": {
+        "value": "false",
+        "comment": "If set to 'true', API calls will be logged in a Postgres database. Connection string field is required if set to true."
+    },
+
+    "db_string": {
+        "value": "host=localhost dbname=socialphotos user=user password=password",
+        "comment": "Postgres connection string for logging"
+    }
+
+}

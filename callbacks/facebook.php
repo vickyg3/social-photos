@@ -2,7 +2,6 @@
 
 require_once('../social_network.php');
 if(isset($_REQUEST['action']) && $_REQUEST['action'] == "store") {
-    session_register("facebook_access_token");
     $_SESSION["facebook_access_token"] = $_REQUEST['atoken'];
     header("Location: ../basic_info.php?network=1");
     die();

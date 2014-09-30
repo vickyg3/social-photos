@@ -6,8 +6,6 @@ class Instagram implements social_network {
 
     private $session_variable = "instagram_access_token";
 
-    public static $callback_url = "http://socialphotos.net/callbacks/facebook.php";
-
     public function oauth_url() {
         return "callbacks/instagram.php";
     }
@@ -38,8 +36,6 @@ class Instagram implements social_network {
 
     public function fetch_basic_info_from_network() {
         $userinfo = instagram_get_userinfo();
-        session_register("instagram_name");
-        session_register("instagram_link");
         $_SESSION['instagram_name'] = $userinfo['name'];
         $_SESSION['instagram_link'] = $userinfo['link'];
     }

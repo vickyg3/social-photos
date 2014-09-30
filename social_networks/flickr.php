@@ -6,10 +6,14 @@ class Flickr implements social_network {
 
     private $session_variable = "phpFlickr_auth_token";
 
-    public static $callback_url = "http://socialphotos.net/callbacks/flickr.php";
+    public static $callback_url;
+
+    public static function init() {
+        self::$callback_url  = Config::get("domain") . "/callbacks/flickr.php";
+    }
 
     public function oauth_url() {
-        return "http://socialphotos.net/callbacks/flickr_oauth.php";
+        return Config::get("domain") . "/callbacks/flickr_oauth.php";
     }
 
     public function session_variable() {
@@ -38,8 +42,6 @@ class Flickr implements social_network {
 
     public function fetch_basic_info_from_network() {
         $userinfo = flickr_get_userinfo();
-        session_register("flickr_name");
-        session_register("flickr_link");
         $_SESSION['flickr_name'] = $userinfo['realname'] . " (" . $userinfo['username'] . ")";
         $_SESSION['flickr_link'] = $userinfo['profileurl'];
     }
@@ -74,5 +76,7 @@ class Flickr implements social_network {
     }
 
 }
+
+Flickr::init();
 
 ?>

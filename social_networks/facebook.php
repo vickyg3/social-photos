@@ -5,15 +5,19 @@ require_once(dirname(dirname(__FILE__)) . "/utils/fb_utils.php");
 class Facebook implements social_network {
 
     private $oauth_endpoint = "https://graph.facebook.com/oauth/authorize";
-    private $api_key = ""; // key filled up in production deployment
     private $api_scope = "publish_stream,read_stream,offline_access,user_photos";
     private $session_variable = "facebook_access_token";
 
-    public static $callback_url = "http://socialphotos.net/callbacks/facebook.php";
+    public static $callback_url;
+
+    public static function init() {
+        self::$callback_url  = Config::get("domain") . "/callbacks/facebook.php";
+    }
 
     public function oauth_url() {
-        $callback_url  = Facebook::$callback_url;
-        return "{$this->oauth_endpoint}?client_id={$this->api_key}&redirect_uri={$callback_url}&scope={$this->api_scope}&type=user_agent";
+        $api_key = Config::get("facebook_api_key");
+        $callback_url = self::$callback_url;
+        return "{$this->oauth_endpoint}?client_id={$api_key}&redirect_uri={$callback_url}&scope={$this->api_scope}&type=user_agent";
     }
 
     public function session_variable() {
@@ -42,8 +46,6 @@ class Facebook implements social_network {
 
     public function fetch_basic_info_from_network() {
         $info = fb_get_userinfo();
-        session_register("facebook_name");
-        session_register("facebook_link");
         $_SESSION['facebook_name'] = $info['name'];
         $_SESSION['facebook_link'] = $info['link'];
     }
@@ -78,5 +80,7 @@ class Facebook implements social_network {
     }
 
 }
+
+Facebook::init();
 
 ?>

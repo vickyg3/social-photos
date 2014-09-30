@@ -4,10 +4,9 @@ require_once('social_network.php');
 if (isset($_GET['id']) && isset($_GET['pane'])) {
     $id = $_GET['id'];
     $pane = $_GET['pane'];
-    session_register("pane{$pane}");
     $_SESSION["pane{$pane}"] = $id;
     $sn = sn($id);
-    if (!session_is_registered($sn->session_variable())) {
+    if (!isset($_SESSION[$sn->session_variable()])) {
         $oauth_url = $sn->oauth_url();
         $sign_in_button = $sn->sign_in_button();
         $name = $sn->name();

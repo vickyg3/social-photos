@@ -4,7 +4,7 @@ require_once(dirname(dirname(__FILE__)) . "/social_network.php");
 
 function open_db() {
     // actual username and passwords are filled up in production deployment
-    return pg_connect("host=localhost dbname=socialphotos user=user password=password");
+    return pg_connect(Config::get("db_string"));
 }
 
 function close_db($db) {
@@ -12,9 +12,12 @@ function close_db($db) {
 }
 
 function run_query($query) {
-    $db = open_db();
-    pg_query($db, $query);
-    close_db($db);
+    // if log is set to false, this is a no-op.
+    if (Config::get("log") == "true") {
+        $db = open_db();
+        pg_query($db, $query);
+        close_db($db);
+    }
 }
 
 function log_transfer($src, $dst, $size) {

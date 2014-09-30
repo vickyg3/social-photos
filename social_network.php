@@ -1,7 +1,7 @@
 <?php
-
 session_start();
-define("DOMAIN", "http://socialphotos.net/");
+require_once(dirname(__FILE__) . "/config.php");
+define("DOMAIN", Config::get("domain"));
 
 interface social_network {
 

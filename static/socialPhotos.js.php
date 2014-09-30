@@ -1,3 +1,7 @@
+<?php
+require_once('../social_network.php');
+?>
+
 function fetchPaneData(data) {
     var index = data.selectedIndex;
     var origId = data.original[0].id + "";
@@ -24,7 +28,6 @@ function fetchPaneData(data) {
 
 <?php
 
-require_once('../social_network.php');
 $data = array();
 for ($i = 0 ; $i < $num_social_networks; $i++) {
     $sn = sn($i);
@@ -42,10 +45,10 @@ var socialNetworks = <?php echo json_encode($data); ?>;
 <?php
 
 $pane1 = "";
-if (session_is_registered("pane1"))
+if (isset($_SESSION['pane1']))
     $pane1 = "defaultSelectedIndex: {$_SESSION['pane1']},";
 $pane2 = "";
-if (session_is_registered("pane2"))
+if (isset($_SESSION['pane2']))
     $pane2 = "defaultSelectedIndex: {$_SESSION['pane2']},";
 
 ?>

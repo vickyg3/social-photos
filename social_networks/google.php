@@ -5,15 +5,19 @@ require_once(dirname(dirname(__FILE__)) . "/utils/google_utils.php");
 class Google implements social_network {
 
     private $oauth_endpoint = "https://accounts.google.com/o/oauth2/auth";
-    private $api_key = ""; // key filled up in production deployment
     private $api_scope = "https://www.googleapis.com/auth/plus.me https://picasaweb.google.com/data/";
     private $session_variable = "google_access_token";
 
-    public static $callback_url = "http://socialphotos.net/callbacks/google.php";
+    public static $callback_url;
+
+    public static function init() {
+        self::$callback_url  = Config::get("domain") . "/callbacks/google.php";
+    }
 
     public function oauth_url() {
-        $callback_url  = Google::$callback_url;
-        return "{$this->oauth_endpoint}?client_id={$this->api_key}&redirect_uri={$callback_url}&scope={$this->api_scope}&response_type=code";
+        $api_key = Config::get("google_api_key");
+        $callback_url = self::$callback_url;
+        return "{$this->oauth_endpoint}?client_id={$api_key}&redirect_uri={$callback_url}&scope={$this->api_scope}&response_type=code";
     }
 
     public function session_variable() {
@@ -42,9 +46,6 @@ class Google implements social_network {
 
     public function fetch_basic_info_from_network() {
         $info = gp_get_userinfo();
-        session_register("google_name");
-        session_register("google_link");
-        session_register("google_id");
         $_SESSION['google_name'] = $info['name'];
         $_SESSION['google_link'] = $info['link'];
         $_SESSION['google_id'] = $info['userid'];
@@ -79,5 +80,7 @@ class Google implements social_network {
     }
 
 }
+
+Google::init();
 
 ?>
