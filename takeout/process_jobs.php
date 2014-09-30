@@ -1,9 +1,8 @@
- <?php
-
-// this runs as a cron job once every 5 minutes or so.
-
+<?php
 require_once(dirname(dirname(__FILE__)) . "/social_network.php");
 require_once(dirname(dirname(__FILE__)) . "/utils/db_utils.php");
+
+// this runs as a cron job once every 5 minutes or so.
 
 function remove_dir($dir) {
 	if (!file_exists($dir)) return;
