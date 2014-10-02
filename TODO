@@ -2,6 +2,7 @@ These are my unimplemented ideas about this project. If you have more, feel free
 
 Feel free to implement any of these (or your own idea) and send a PR, I'll be more than happy to look at it.
 
+- use hosted bootstrap, jquery, et al.
 - implement a cache layer
 - add error handling if $_GET parameters are missing in various files
 - Refactor the codebase (long lines, etc.)
