@@ -42,6 +42,7 @@ class Flickr implements social_network {
 
     public function fetch_basic_info_from_network() {
         $userinfo = flickr_get_userinfo();
+        $_SESSION['flickr_userid'] = $userinfo['username'];
         $_SESSION['flickr_name'] = $userinfo['realname'] . " (" . $userinfo['username'] . ")";
         $_SESSION['flickr_link'] = $userinfo['profileurl'];
     }

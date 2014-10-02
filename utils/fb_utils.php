@@ -2,14 +2,19 @@
 
 require_once(dirname(dirname(__FILE__)) . '/social_network.php');
 
-function curl_request($url, $limit = false)
+function curl_request($url, $limit = false, $fields = '')
 {
     $limit = false;
     $curl = curl_init();
-    if($limit)
-        curl_setopt($curl, CURLOPT_URL, $url . "?limit=2&access_token=" . $_SESSION['facebook_access_token']);
-    else
-        curl_setopt($curl, CURLOPT_URL, $url . "?limit=200&access_token=" . $_SESSION['facebook_access_token']);
+    if($limit) {
+        $curl_url = $url . "?limit=2&access_token=" . $_SESSION['facebook_access_token'];
+    } else {
+        $curl_url = $url . "?limit=200&access_token=" . $_SESSION['facebook_access_token'];
+    }
+    if ($fields != '') {
+        $curl_url .= "&fields=" . $fields;
+    }
+    curl_setopt($curl, CURLOPT_URL, $curl_url);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
@@ -41,7 +46,8 @@ function fb_get_cover_photo($id)
 
 function fb_get_albums()
 {
-    $albums = curl_request("https://graph.facebook.com/me/albums", true);
+    $albums = curl_request("https://graph.facebook.com/me/albums", false,
+                           "id,name,count,cover_photo");
     $albums = $albums['data'];
     $album_list = array();
     foreach($albums as $album)
@@ -60,7 +66,9 @@ function fb_get_albums()
 function fb_get_photos($albumid)
 {
     $album = curl_request("https://graph.facebook.com/" . $albumid);
-    $photos = curl_request("https://graph.facebook.com/" . $albumid . "/photos", true);
+    $photos = curl_request("https://graph.facebook.com/" . $albumid . "/photos",
+                           true,
+                           "id,name,picture,source,link,likes.limit(1).summary(true)");
     $photos = $photos['data'];
     $photos_list = array();
     foreach($photos as $photo)
@@ -69,7 +77,9 @@ function fb_get_photos($albumid)
                                 'photo_id'=>$photo['id'],
                                 'photo_title'=>$photo['name'],
                                 'photo_thumbnail'=>$photo['picture'],
-                                'photo_url'=>$photo['source']
+                                'photo_url'=>$photo['source'],
+                                'photo_likes'=>$photo['likes']['summary']['total_count'],
+                                'photo_link'=>$photo['link']
                               );
     }
     return array(

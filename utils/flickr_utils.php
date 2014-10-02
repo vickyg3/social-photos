@@ -32,14 +32,16 @@ function flickr_get_album_list() {
 function flickr_get_photos_list($albumid) {
     include(dirname(__FILE__) . "/flickr_header.php");
     $album = $flickr->photosets_getInfo($albumid);
-    $data = $flickr->photosets_getPhotos($albumid, "url_t,url_o", NULL, 500, 1, NULL);
+    $data = $flickr->photosets_getPhotos($albumid, "url_t,url_o,views", NULL, 500, 1, NULL);
     $photo_list = array();
     foreach($data['photoset']['photo'] as $photo) {
         $photo_list[] = array(
                                 'photo_id' => $photo['id'],
                                 'photo_title' => $photo['title'],
                                 'photo_thumbnail' => $photo['url_t'],
-                                'photo_url' => $photo['url_o']
+                                'photo_url' => $photo['url_o'],
+                                'photo_likes' => $photo['views'],
+                                'photo_link' => 'https://www.flickr.com/photos/' . $_SESSION['flickr_userid'] . "/" . $photo['id']
                              );
     }
     return array(

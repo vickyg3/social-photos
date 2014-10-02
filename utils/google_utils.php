@@ -53,7 +53,10 @@ function gp_get_photos($albumid)
                                 'photo_id' => $photo['gphoto$id']['$t'],
                                 'photo_title' => $photo['summary']['$t'],
                                 'photo_thumbnail' => $thumbnail,
-                                'photo_url' => $photo['content']['src']
+                                'photo_url' => $photo['content']['src'],
+                                // TODO: figure out a way to populate the below two fields. they don't seem to exist in the picasa web api.
+                                'photo_likes' => '',
+                                'photo_link' => ''
                              );
     }
     return array(

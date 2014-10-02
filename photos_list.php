@@ -37,7 +37,7 @@ if(isset($_GET['format']) && $_GET['format'] == 'json') {
     foreach($photos_list as $photo) {
         echo "<li id=\"l" . $photo['photo_id'] . "\" style=\"display:none\">";
         echo "<div class=\".cornerpatch\">";
-        echo "<a id=\"{$pane}_a" . $photo['photo_id'] . "\" href=\"javascript:void(0);\" title=\"" . $photo['photo_title'] . "\" onClick=\"previewImage('" . $photo['photo_id'] . "');\">";
+        echo "<a id=\"{$pane}_a" . $photo['photo_id'] . "\" href=\"javascript:void(0);\" title=\"" . $photo['photo_likes'] . " &#9786; " . $photo['photo_title'] . "\" onClick=\"previewImage('" . $photo['photo_id'] . "');\">";
         echo "<img id=\"" . $photo['photo_id'] . "\" src=\"" . $photo['photo_thumbnail'] . "\" alt=\"" . $photo['photo_title'] . "\" />";
         echo "<input type=\"hidden\" id=\"h" . $photo['photo_id'] . "\" value=\"" . $photo['photo_url'] . "\">";
         echo "</a>";

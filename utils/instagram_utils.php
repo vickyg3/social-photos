@@ -31,6 +31,8 @@ function instagram_get_photo_list() {
                                 'photo_title' => $photo->caption->text,
                                 'photo_thumbnail' => $photo->images->thumbnail->url,
                                 'photo_url' => $photo->images->standard_resolution->url,
+                                'photo_likes' => $photo->likes->count,
+                                'photo_link' => $photo->link
                              );
     }
     return $photo_list;

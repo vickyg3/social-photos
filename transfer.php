@@ -5,7 +5,7 @@ require_once(dirname(__FILE__) . "/utils/db_utils.php");
 
 function li_element($pane, $photo) {
     $wstr = "";
-    $wstr .= "<a id=\"{$pane}_a" . $photo['id'] . "\" href=\"javascript:void(0);\" title=\"" . $photo['caption'] . "\" onClick=\"previewImage('" . $photo['id'] . "');\">";
+    $wstr .= "<a id=\"{$pane}_a" . $photo['id'] . "\" href=\"javascript:void(0);\" title=\"0 &#9786; " . $photo['caption'] . "\" onClick=\"previewImage('" . $photo['id'] . "');\">";
     $wstr .= "<img id=\"" . $photo['id'] . "\" src=\"" . $photo['thumbnail'] . "\" alt=\"" . $photo['caption'] . "\" />";
     $wstr .= "<input type=\"hidden\" id=\"h" . $photo['id'] . "\" value=\"" . $photo['url'] . "\">";
     $wstr .= "</a>";
