@@ -7,7 +7,6 @@ Feel free to implement any of these (or your own idea) and send a PR, I'll be mo
 - add error handling if $_GET parameters are missing in various files
 - Refactor the codebase (long lines, etc.)
 - Linkify albums in tab 3 of takeouts to link to the actual album in the social network
-- Show number of likes for each album in the polaroid
 - Show number of comments int he polaroid
 - Add an option to transfer comments as plain text
 - Add an option to delete a photo (place an x on the polaroid).
