@@ -21,7 +21,7 @@
             </p>
             <p>
               <ul>
-                <li>PHP Instagram Library - Provides interface to access Instagram - <a href="https://github.com/galen/PHP-Instagram-API" target="_blank">https://github.com/galen/PHP-Instagram-API</a></li>
+                <li>PHP Instagram Library - Provides interface to access Instagram - <a href="https://github.com/cosenary/Instagram-PHP-API" target="_blank">https://github.com/cosenary/Instagram-PHP-API</a></li>
                 <li>PHP Flickr Library - Provides interface to access Flickr - <a href="http://phpflickr.com/" target="_blank">http://phpflickr.com/</a></li>
                 <li>Twitter Bootstrap Javascript/CSS Library - Makes all the beautiful UI elements possible without much effort - <a href="http://twitter.github.io/bootstrap/" target="_blank">http://twitter.github.io/bootstrap/</a></li>
                 <li>ddSlick - JQuery Library that enables the cool drop down list - <a href="http://designwithpc.com/Plugins/ddSlick" target="_blank">http://designwithpc.com/Plugins/ddSlick</a></li>
@@ -30,6 +30,7 @@
                 <li>Zoho Mail - For hosting our E-Mail Servers - <a href="https://www.zoho.com/mail" target="_blank">https://www.zoho.com/mail</a></li>
                 <li>Paypal Donate Button - <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donate-intro-outside" target="_blank">https://www.paypal.com/cgi-bin/webscr?cmd=_donate-intro-outside</a></li>
                 <li>Share Link Generator - <a href="http://www.sharelinkgenerator.com/" target="_blank">http://www.sharelinkgenerator.com/</a></li>
+                <li>Old - Not used anymore - PHP Instagram Library - Provides interface to access Instagram - <a href="https://github.com/galen/PHP-Instagram-API" target="_blank">https://github.com/galen/PHP-Instagram-API</a></li>
               </ul>
             </p>
         </div>
