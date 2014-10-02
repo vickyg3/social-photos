@@ -2,12 +2,15 @@
 
 require_once(dirname(dirname(__FILE__)) . "/utils/instagram_utils.php");
 
-class Instagram implements social_network {
+// This class is named InstagramSN because Instagram collides with the PHP
+// Instagram API (instagram.class.php)
+class InstagramSN implements social_network {
 
     private $session_variable = "instagram_access_token";
 
     public function oauth_url() {
-        return "callbacks/instagram.php";
+        $instagram = get_instagram_api();
+        return $instagram->getLoginUrl(array('basic'));
     }
 
     public function session_variable() {
@@ -35,9 +38,9 @@ class Instagram implements social_network {
     }
 
     public function fetch_basic_info_from_network() {
-        $userinfo = instagram_get_userinfo();
-        $_SESSION['instagram_name'] = $userinfo['name'];
-        $_SESSION['instagram_link'] = $userinfo['link'];
+        // for instagram, this is done in the OAuth Callback.
+        // see callbacks/instagram.php
+        return;
     }
 
     public function basic_info() {

@@ -70,7 +70,7 @@ function sn($id) {
         case 2:
             return new Flickr();
         case 3:
-            return new Instagram();
+            return new InstagramSN();
     }
 }
 
