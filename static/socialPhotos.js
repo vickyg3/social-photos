@@ -141,17 +141,24 @@ function previewImage(photoId) {
     $("#modalSlideShow").modal("show");
 }
 
-function makeDraggable() {
+var dragEventListener = function(event) {
     var dragIcon = document.createElement('img');
-    dragIcon.src = 'static/images/fb_icon.gif';
+    // iconSrc is of the form <src_network_id>-to-<dst_network_id>.png
+    var iconSrc = "static/images/";
+    iconSrc += (paneConfig[0].hasOwnProperty("networkId")) ? paneConfig[0].networkId : "x";
+    iconSrc += "-to-";
+    iconSrc += (paneConfig[1].hasOwnProperty("networkId")) ? paneConfig[1].networkId : "x";
+    iconSrc += "-icon.png";
+    dragIcon.src = iconSrc;
+    // store the ID of the element, and collect it on the drop later on
+    event.dataTransfer.setData('Text', this.id);
+    event.dataTransfer.setDragImage(dragIcon, -10, -10);
+}
 
+function makeDraggable() {
     var dragItems = document.querySelectorAll('a');
     var i;
     for (i = 0; i < dragItems.length; i++) {
-        addEvent(dragItems[i], 'dragstart', function (event) {
-        // store the ID of the element, and collect it on the drop later on
-        event.dataTransfer.setData('Text', this.id);
-        event.dataTransfer.setDragImage(dragIcon, -10, -10);
-      });
+        addEvent(dragItems[i], 'dragstart', dragEventListener);
     }
 }
