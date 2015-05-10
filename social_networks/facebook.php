@@ -5,7 +5,7 @@ require_once(dirname(dirname(__FILE__)) . "/utils/fb_utils.php");
 class Facebook implements social_network {
 
     private $oauth_endpoint = "https://graph.facebook.com/oauth/authorize";
-    private $api_scope = "publish_stream,read_stream,offline_access,user_photos";
+    private $api_scope = "publish_actions,read_stream,user_photos";
     private $session_variable = "facebook_access_token";
 
     public static $callback_url;
