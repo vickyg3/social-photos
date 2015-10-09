@@ -19,7 +19,7 @@
       </div>
       <div class="alert alert-info">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Note:</strong> Facebook integration currently has issues. I'm working on it and it will be fixed soon. Thanks for your patience!
+        <strong>Note:</strong> Facebook integration currently has issues. I'm working on it and it will be fixed soon. Thanks for your patience! <a href="https://github.com/vickyg3/social-photos/issues/52" target="_blank">For details see here.</a>
       </div>
       <div class="row-fluid">
         <div class="span6" id="pane1">
