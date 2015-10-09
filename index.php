@@ -17,6 +17,10 @@
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong><a href="/takeout.php">Social Photos Takeout - </strong> You can download your photos from various Social Networks with Takeout. Try it out!</a>
       </div>
+      <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Note:</strong> Facebook integration currently has issues. I'm working on it and it will be fixed soon. Thanks for your patience!
+      </div>
       <div class="row-fluid">
         <div class="span6" id="pane1">
           <center> <!-- i know, evil! but it works! -->
