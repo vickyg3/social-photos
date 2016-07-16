@@ -15,6 +15,10 @@
       <br/>
       <div class="alert alert-info">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <a href="https://github.com/vickyg3/social-photos/issues/60" target="_blank">We are aware of instagram login issues and working on fixing it.</a>
+      </div>
+      <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong><a href="/takeout.php">Social Photos Takeout - </strong> You can download your photos from various Social Networks with Takeout. Try it out!</a>
       </div>
       <div class="row-fluid">
